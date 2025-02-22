@@ -1,0 +1,16 @@
+# Comment GIT cơ bản hay dùng
+- git init: Tạo ra 1 repo
+- git clone: Sao chép một repo khác từ Github hay từ 1 nguồn khác về máy bạn
+Cú pháp:
+git clone <URL-repository>
+VD: git clone https://github.com/tiendat8438/codeptit.git
+- git pull: Đồng bộ dữ liệu từ trên mạng về máy
+- git add và git add.: Thêm file
+Cú pháp: git add <Tên file>
+- git commit: dùng để lưu lại (commit) các thay đổi trong repository sau khi bạn đã thêm chúng vào staging area bằng git add
+Cú pháp: git commit -m "<comments>"
+- git push: được dùng để đẩy (upload) các commit từ máy tính lên repository trên GitHub, GitLab hoặc các remote khác.
+Cú pháp: git push origin main
+origin: Tên remote repository (thường là GitHub).
+main: Nhánh (branch) cần đẩy lên.
+- git log or git status: Kiểm tra trạng thái của filefile
