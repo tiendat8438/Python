@@ -14,4 +14,16 @@ Cú pháp: git commit -m "<comments>"
 Cú pháp: git push origin main
 origin: Tên remote repository (thường là GitHub).
 main: Nhánh (branch) cần đẩy lên.
-- git log or git status: Kiểm tra trạng thái của filefile
+- git log or git status: Kiểm tra trạng thái của file
+- git branch: dùng để quản lý các nhánh (branch) trong Git, bao gồm xem danh sách nhánh, tạo nhánh mới, đổi tên hoặc xóa nhánh.
++ Xem danh sách các nhánh
+Cú pháp: git branch
+Nếu muốn xem cả nhánh trên remote repository: git branch -r
+Nếu muốn xem tất cả nhánh (local + remote): git branch -a
++ Tạo nhánh mới:
+Cú pháp: git branch <tên-nhánh>
+- git checkout: Chuyển sang nhánh khác
+Cú pháp: git checkout <tên-nhánh> hoặc git switch <tên-nhánh>
+Nếu muốn tạo và chuyển ngay vào nhánh mới:
+git checkout -b <tên-nhánh> hoặc git switch -c <tên-nhánh>
+
