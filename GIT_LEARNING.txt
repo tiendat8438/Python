@@ -26,4 +26,11 @@ Cú pháp: git branch <tên-nhánh>
 Cú pháp: git checkout <tên-nhánh> hoặc git switch <tên-nhánh>
 Nếu muốn tạo và chuyển ngay vào nhánh mới:
 git checkout -b <tên-nhánh> hoặc git switch -c <tên-nhánh>
-
+- git merge: dùng để gộp (kết hợp) các thay đổi từ một nhánh khác vào nhánh hiện tại.
+Cú pháp: git merge <tên-nhánh>
+Ví dụ:
+git checkout main    # Chuyển sang nhánh main
+git merge feature-1  # Gộp nhánh feature-1 vào main
+-> Tất cả thay đổi từ feature-1 sẽ được gộp vào main
+Nếu nhánh feature-1 k còn cần thiết bạn có thể xóa bằng:
+git branch -d feature-1
