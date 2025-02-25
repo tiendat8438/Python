@@ -14,7 +14,7 @@ def format_string(text):
 if __name__ == "__main__":
     text = ""
     for line in sys.stdin:
-        text += line.strip().split()
+        text += " " + line.strip()
     sentences = format_string(text)
     for line in sentences:
         print(line)
