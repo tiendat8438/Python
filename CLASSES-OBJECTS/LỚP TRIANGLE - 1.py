@@ -22,20 +22,15 @@ class Triangle:
         return f'{AB+BC+CA:.3f}'
 
 if __name__ == "__main__":
-    res = []       
-    n = int(input())  # Nhập số bộ test
+    n = int(input())  # Số bộ test
     data = []
-    # Đọc input cho đến khi đủ 6 * n số
+    # Đọc input trên nhiều dòng
     while len(data) < 6 * n:
         line = input().strip()
         if line:
-            data.extend(map(int, line.split()))  # Thêm tất cả số từ dòng hiện tại
+            data.extend(map(float, line.split()))
 
-    # Chia dữ liệu thành từng bộ test 6 số một
     for i in range(n):
         x1, y1, x2, y2, x3, y3 = data[i * 6:(i + 1) * 6]
         p = Triangle(x1, y1, x2, y2, x3, y3)
-        res.append(p.chuvi())
-
-    for x in res:
-        print(x)
+        print(p.chuvi())
