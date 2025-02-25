@@ -1,0 +1,97 @@
+1. Các hàm chính trong re
+1.1 re.search(pattern, string): Tìm kiếm chuỗi có khớp với pattern không. Trả về Match object nếu tìm thấy, None nếu không.
+VD:
+import re
+text = "Hello, I am learning Python!"
+pattern = r"Python"
+match = re.search(pattern, text)
+if match:
+    print("Tìm thấy:", match.group())  # Output: Tìm thấy: Python
+
+1.2 re.findall(pattern, string): Trả về danh sách tất cả các chuỗi khớp với pattern.
+VD:
+text = "I have 2 apples and 3 bananas."
+pattern = r"\d+"  # Tìm tất cả các số
+
+numbers = re.findall(pattern, text)
+print(numbers)  # Output: ['2', '3']
+
+1.3 re.finditer(pattern, string): Tương tự findall(), nhưng trả về iterator của các Match object.
+VD:
+text = "I have 2 apples and 3 bananas."
+pattern = r"\d+"
+
+matches = re.finditer(pattern, text)
+for match in matches:
+    print(match.group(), "found at index", match.start())
+Output:
+2 found at index 7
+3 found at index 19
+
+1.4 re.match(pattern, string): Kiểm tra xem chuỗi có bắt đầu bằng pattern không. Nếu có, trả về Match object, ngược lại trả về None.
+text = "Python is awesome"
+pattern = r"Python"
+
+match = re.match(pattern, text)
+if match:
+    print("Bắt đầu bằng:", match.group())  # Output: Bắt đầu bằng: Python
+
+1.5 re.sub(pattern, replacement, string): Thay thế tất cả các phần khớp với pattern bằng replacement.
+VD:
+text = "I love Python, Python is great!"
+pattern = r"Python"
+
+new_text = re.sub(pattern, "Django", text)
+print(new_text)  # Output: I love Django, Django is great!
+
+1.6 re.split(pattern, string): Tách chuỗi dựa trên pattern.
+VD:
+text = "apple, orange;banana|grape"
+pattern = r"[,;|]"  # Dấu phẩy, chấm phẩy hoặc dấu gạch đứng
+
+words = re.split(pattern, text)
+print(words)  # Output: ['apple', ' orange', 'banana', 'grape']
+
+2. Các ký tự đặc biệt trong Regex
+Ký tự	                Ý nghĩa	                                    Ví dụ
+.	        Bất kỳ ký tự nào (trừ dòng mới)	            "c.t" khớp với "cat", "cot", "cut"
+^	        Bắt đầu chuỗi	                            "^Hello" khớp với "Hello world"
+$	        Kết thúc chuỗi	                            "world$" khớp với "Hello world"
+*	        Lặp lại 0 hoặc nhiều lần	                "ab*" khớp với "a", "ab", "abb", "abbb"
++	        Lặp lại 1 hoặc nhiều lần	                "ab+" khớp với "ab", "abb", "abbb" nhưng không khớp với "a"
+?	        Lặp lại 0 hoặc 1 lần	                    "ab?" khớp với "a", "ab"
+{n}	        Lặp lại đúng n lần	                        "a{3}" khớp với "aaa"
+{n,}	    Lặp lại ít nhất n lần	                    "a{2,}" khớp với "aa", "aaa", "aaaa"
+{n,m}	    Lặp lại từ n đến m lần	                    "a{2,4}" khớp với "aa", "aaa", "aaaa"
+\d	        Bất kỳ số nào (0-9)	                        "\d+" khớp với "123", "456"
+\D	        Bất kỳ ký tự không phải số	                "\D+" khớp với "abc", "Hello"
+\s	        Khoảng trắng (space, tab, newline)	        "\s+" khớp với " "
+\S	        Ký tự không phải khoảng trắng	            "\S+" khớp với "Hello"
+\w	        Ký tự chữ và số (a-z, A-Z, 0-9, _)	        "\w+" khớp với "Python_123"
+\W	        Ký tự không phải chữ và số	                "\W+" khớp với "@!#$%^"
+
+3. Nhóm và Lựa chọn trong Regex
+3.1 Nhóm (): Dùng để nhóm các phần của pattern.
+VD:
+text = "Today is 25-02-2025"
+pattern = r"(\d{2})-(\d{2})-(\d{4})"
+
+match = re.search(pattern, text)
+if match:
+    print("Ngày:", match.group(1))
+    print("Tháng:", match.group(2))
+    print("Năm:", match.group(3))
+Output:
+Ngày: 25
+Tháng: 02
+Năm: 2025
+
+3.2 Lựa chọn |: Dùng để chọn một trong nhiều mẫu.
+VD:
+text = "I love Python and Java"
+pattern = r"Python|Java"
+
+matches = re.findall(pattern, text)
+print(matches)  # Output: ['Python', 'Java']
+
+
