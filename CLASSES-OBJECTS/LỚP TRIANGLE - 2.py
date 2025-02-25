@@ -30,7 +30,6 @@ class Triangle:
 if __name__ == "__main__":
     n = int(input())  # Số bộ test
     data = []
-
     # Đọc input trên nhiều dòng
     while len(data) < 6 * n:
         line = input().strip()
