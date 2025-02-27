@@ -37,3 +37,4 @@ if __name__ == "__main__":
             ma_tram[ten_tram] = f"T{idx:02d}"
             idx += 1
         print(f'{ma_tram[ten_tram]} {ten_tram} {tram.luong_mua_trung_binh():.2f}')
+    
