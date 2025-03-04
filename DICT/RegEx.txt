@@ -54,6 +54,10 @@ print(words)  # Output: ['apple', ' orange', 'banana', 'grape']
 
 2. Các ký tự đặc biệt trong Regex
 Ký tự	                Ý nghĩa	                                    Ví dụ
+[]          Một tập các kí tự                           "[a-m]"
+\           Đánh dấu một chuỗi đặc biệt                 "\d"
+            (cũng có thể được sử dụng để thoát
+             các ký tự đặc biệt)             
 .	        Bất kỳ ký tự nào (trừ dòng mới)	            "c.t" khớp với "cat", "cot", "cut"
 ^	        Bắt đầu chuỗi	                            "^Hello" khớp với "Hello world"
 $	        Kết thúc chuỗi	                            "world$" khớp với "Hello world"
@@ -63,12 +67,34 @@ $	        Kết thúc chuỗi	                            "world$" khớp với 
 {n}	        Lặp lại đúng n lần	                        "a{3}" khớp với "aaa"
 {n,}	    Lặp lại ít nhất n lần	                    "a{2,}" khớp với "aa", "aaa", "aaaa"
 {n,m}	    Lặp lại từ n đến m lần	                    "a{2,4}" khớp với "aa", "aaa", "aaaa"
+\A          Trả về một kết quả nếu các ký tự            "\AThe"
+            được chỉ định nằm ở đầu chuỗi.
+\b          Trả về một kết quả mà các ký tự được        r"\bain" or r"ain\b"
+            chỉ định nằm ở đầu hoặc ở cuối một từ
+            (chữ "r" ở đầu là để đảm bảo rằng chuỗi
+            được xử lý như một "chuỗi thô")
+\B          .....không nằm ở đầu hay ở cuối.....        r"\Bain" or r"ain\B"
 \d	        Bất kỳ số nào (0-9)	                        "\d+" khớp với "123", "456"
 \D	        Bất kỳ ký tự không phải số	                "\D+" khớp với "abc", "Hello"
 \s	        Khoảng trắng (space, tab, newline)	        "\s+" khớp với " "
 \S	        Ký tự không phải khoảng trắng	            "\S+" khớp với "Hello"
 \w	        Ký tự chữ và số (a-z, A-Z, 0-9, _)	        "\w+" khớp với "Python_123"
 \W	        Ký tự không phải chữ và số	                "\W+" khớp với "@!#$%^"
+\Z          Trả về một kết quả phù hợp nếu các          "Spain\Z"
+            ký tự được chỉ định nằm ở cuối chuỗi
+
+Sets: Một tập hợp là một tập hợp các ký tự bên trong một cặp dấu ngoặc vuông [] với ý nghĩa đặc biệt
+
+Set                 Description
+[arn]           Trả về một kết quả phù hợp nơi mà một trong các ký tự được chỉ định (a, r hoặc n) có mặt.
+[a-n]           Trả về một ký tự phù hợp cho bất kỳ ký tự chữ thường nào, theo thứ tự bảng chữ cái từ a đến n
+[^arn]          Trả về một ký tự phù hợp với bất kỳ ký tự nào TRỪ a, r và n
+[0123]          Trả về một kết quả nơi bất kỳ chữ số nào được chỉ định (0, 1, 2 hoặc 3) có mặt.
+[0-9]           Trả về một kết quả cho bất kỳ chữ số nào từ 0 đến 9
+[0-5][0-9]      Trả về một kết quả cho bất kỳ số nào có hai chữ số từ 00 đến 59
+[a-zA-Z]        Trả về một ký tự phù hợp với bất kỳ ký tự nào trong bảng chữ cái từ a đến z, cả chữ thường và chữ hoa.
+[+]             Trong tập hợp, +, *, ., |, (), $, {} không có ý nghĩa đặc biệt, vì vậy [+] có nghĩa là: trả về một kết
+                quả khớp cho bất kỳ ký tự + nào trong chuỗi.
 
 3. Nhóm và Lựa chọn trong Regex
 3.1 Nhóm (): Dùng để nhóm các phần của pattern.
