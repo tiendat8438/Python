@@ -1,29 +1,27 @@
-import sys
-import math
+from math import sqrt
 
-is_prime = [True] * (10**6 + 1)
+nt, a = [1 for i in range(int(1e6) + 2)], []
+nt[0] = nt[1] = 0
+for i in range(2, int(sqrt(1e6))):
+    if nt[i] == 1:
+        for j in range(i, int(1e6/i)):
+            nt[j*i] = 0
 
-def sieve():
-    is_prime[0] = is_prime[1] = False
-    for i in range(2, math.isqrt(10**6)):
-        if is_prime[i]:
-            for j in range(i*i, 10**6 + 1, i):
-                is_prime[j] = False
-    primes = [i for i in range(10**6 + 1) if is_prime[i]]
-    return primes
+for i in range(int(1e6)):
+    if nt[i]:
+        a.append(i)
 
-def count(n, primes):
-    cnt = 0
-    for p in primes:
-        if p + 6 >= n:
-            break
-        if (p + 2 in primes and p + 6 in primes) or  (p + 4 in primes and p + 6 in primes):
-            cnt += 1
-    return cnt
+ans = [0 for i in range(int(1e6) + 5)]
+cnt = 0
+for i in range(len(a) - 2):
+    if a[i + 2] - a[i] == 6 and (a[i + 1] - a[i] == 2 or a[i + 1] - a[i]):
+        ans[a[i + 2] + 1] = cnt + 1
+        cnt += 1
 
-if __name__ == '__main__':
-    primes = sieve()
-    T = int(sys.stdin.readline().strip())
-    for _ in range(T):
-        n = int(sys.stdin.readline().strip())
-        print(count(n, primes))
+for i in range(1, int(1e6) + 2):
+    if ans[i] > 0:
+        continue
+    else:
+        ans[i] = ans[i - 1]
+for t in range(int(input())):
+    print(ans[int(input())])

@@ -7,7 +7,7 @@ def solve(n):
     q.put('1')
     q.put('2')
     res = []
-    while not q.empty():
+    while not q.empty():    
         cur = q.get()
         if check(cur):
             res.append(cur)
